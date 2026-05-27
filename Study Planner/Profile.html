@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile Settings</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#add8e6;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.container{
+width:650px;
+background:white;
+padding:45px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+h1{
+color:#add8e6;
+font-size:36px;
+}
+
+.profile-icon{
+width:70px;
+height:70px;
+border-radius:50%;
+background:#add8e6;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+}
+
+p{
+color:#666;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+color:#333;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#add8e6;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#95cada;
+}
+
+.guide{
+font-size:13px;
+color:#666;
+margin-bottom:15px;
+}
+
+.back{
+margin-top:15px;
+text-align:center;
+color:#555;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="top">
+
+<h1>Profile Settings</h1>
+
+<div class="profile-icon">
+👤
+</div>
+
+</div>
+
+<p>Manage your account settings</p>
+
+<label>Email</label>
+<input type="text" id="maskedEmail" readonly>
+
+<label>Current Password</label>
+<input type="password" id="currentPass" placeholder="Current Password">
+
+<label>New Password</label>
+<input type="password" id="newPass" placeholder="New Password">
+
+<label>Confirm Password</label>
+<input type="password" id="confirmPass" placeholder="Confirm Password">
+
+<div class="guide">
+Password must contain 8+ characters, 1 uppercase letter, and 1 number
+</div>
+
+<button onclick="changePassword()">
+Change Password
+</button>
+
+<button onclick="goBack()">
+Back to Dashboard
+</button>
+
+</div>
+
+<script>
+
+/* MASK EMAIL */
+
+function maskEmail(email){
+
+let parts = email.split("@");
+
+let name = parts[0];
+
+return name.substring(0,4) + "**@" + parts[1];
+
+}
+
+let savedEmail = localStorage.getItem("email");
+if(savedEmail){
+
+document.getElementById("maskedEmail").value =
+maskEmail(savedEmail);
+
+}
+
+/* CHANGE PASSWORD */
+
+function changePassword(){
+
+let savedPass = localStorage.getItem("password");
+let current = document.getElementById("currentPass").value;
+
+let newPass = document.getElementById("newPass").value;
+let confirm = document.getElementById("confirmPass").value;
+
+if(current !== savedPass){
+
+alert("Current password is incorrect");
+return;
+
+}
+
+if(newPass !== confirm){
+
+alert("Passwords do not match");
+return;
+
+}
+
+let pattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+if(!pattern.test(newPass)){
+
+alert("Password must contain 8 characters, 1 uppercase letter, and 1 number");
+return;
+
+}
+
+localStorage.setItem("password", newPass);
+
+alert("Password changed successfully");
+
+window.location.href = "Study Planner.html";
+
+}
+
+/* BACK */
+
+function goBack(){
+
+window.location.href = "Welcome.html";
+
+}
+
+</script>
+
+</body>
+</html>
