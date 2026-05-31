@@ -1,13 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Categories</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#add8e6;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:30px;
+}
+
+.container{
+width:650px;
+background:white;
+padding:45px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+h1{
+color:#add8e6;
+font-size:36px;
+}
+
+.icon-badge {
+width:70px;
+height:70px;
+border-radius:50%;
+background:#add8e6;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+}
+
+.subtitle{
+color:#666;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+color:#333;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:15px;
+}
+
+.category-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 12px;
+margin: 20px 0;
+max-height: 180px;
+overflow-y: auto;
+padding-right: 5px;
+}
+
+.category-card {
+background: #f7f9fa;
+border: 1px solid #ddd;
+padding: 14px;
+border-radius: 10px;
+font-size: 15px;
+color: #333;
+display: flex;
+align-items: center;
+gap: 10px;
+font-weight: bold;
+}
+
+.category-dot {
+width: 12px;
+height: 12px;
+background: #add8e6;
+border-radius: 50%;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#add8e6;
+color:white;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+margin-top:10px;
+transition: 0.3s;
+}
+
+button:hover{
+background:#95cada;
+}
+
+.secondary-btn {
+background: transparent;
+border: 2px solid #add8e6;
+color: #add8e6;
+margin-top: 15px;
+}
+
+.secondary-btn:hover {
+background: #f4faff;
+color: #95cada;
+border-color: #95cada;
+}
+</style>
 </head>
+
 <body>
-     <button>
-    <a href="Welcome.html">Back to home</a>
-</button>
+
+<div class="container">
+
+<div class="top">
+<h1>Categories</h1>
+<div class="icon-badge">📁</div>
+</div>
+
+<p class="subtitle">Organize tasks into structured subject themes.</p>
+
+<label>Add New Category</label>
+<input type="text" id="categoryName" placeholder="e.g., Mathematics, Coding, Research">
+
+<button onclick="addCategory()">Create Category</button>
+
+<div style="margin-top: 25px;">
+<label>Active Project Categories</label>
+<div class="category-grid" id="categoryBox">
+<div class="category-card"><div class="category-dot"></div>School</div>
+<div class="category-card"><div class="category-dot"></div>Personal</div>
+<div class="category-card"><div class="category-dot"></div>Work</div>
+</div>
+</div>
+
+<button class="secondary-btn" onclick="goBack()">Back to Dashboard</button>
+
+</div>
+
+<script>
+function addCategory() {
+    let input = document.getElementById("categoryName");
+    let name = input.value.trim();
+
+    if(name === "") {
+        alert("Please enter a category name");
+        return;
+    }
+
+    let grid = document.getElementById("categoryBox");
+
+    let newCard = document.createElement("div");
+    newCard.className = "category-card";
+    newCard.innerHTML = `<div class="category-dot"></div>${name}`;
+    
+    grid.appendChild(newCard);
+    alert(`Category "${name}" added!`);
+    input.value = "";
+}
+
+function goBack(){
+    window.location.href = "Welcome.html";
+}
+</script>
+
 </body>
 </html>
