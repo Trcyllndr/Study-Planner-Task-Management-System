@@ -4,10 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications</title>
+    <link rel="stylesheet" href="style.css">
+
+<style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+    }
+
+    body{
+    background:#add8e6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:30px;
+    }
+
+    .container{
+    width:650px;
+    background:white;
+    padding:45px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    }
+
+    .top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    }
+
+    h1{
+    color:#add8e6;
+    font-size:36px;
+    }
+
+    .icon-badge {
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#add8e6;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    }
+
+    .subtitle{
+    color:#666;
+    margin-bottom:25px;
+    }
+
+    .notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+    }
+
+    .notification-item {
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fbfbfb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+    }
+
+    .notification-item.unread {
+    border-left: 5px solid #add8e6;
+    background: #f4faff;
+    }
+
+    .notification-content h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 4px;
+    }
+
+    .notification-content p {
+    font-size: 13px;
+    color: #666;
+    }
+
+    .time {
+    font-size: 12px;
+    color: #aaa;
+    white-space: nowrap;
+    margin-left: 10px;
+    }
+
+    button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#add8e6;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:10px;
+    transition: 0.3s;
+    }
+
+    button:hover{
+    background:#95cada;
+    }
+
+    .secondary-btn {
+    background: transparent;
+    border: 2px solid #add8e6;
+    color: #add8e6;
+    margin-top: 15px;
+    }
+
+    .secondary-btn:hover {
+    background: #f4faff;
+    color: #95cada;
+    border-color: #95cada;
+    }
+</style>
 </head>
+    
 <body>
-     <button>
-    <a href="Welcome.html">Back to home</a>
-</button>
+
+    <div class="container">
+
+    <div class="top">
+    <h1>Notifications</h1>
+    <div class="icon-badge">🔔</div>
+    </div>
+
+    <p class="subtitle">Stay updated with your study schedule alerts.</p>
+
+    <div class="notification-list">
+    <div class="notification-item unread">
+    <div class="notification-content">
+    <h4>Database Project Due Soon!</h4>
+    <p>Your assignment "Database Project" is due in 2 days.</p>
+    </div>
+    <span class="time">10m ago</span>
+    </div>
+
+    <div class="notification-item">
+    <div class="notification-content">
+    <h4>Task Completed</h4>
+    <p>You completed your Math Assignment ahead of schedule.</p>
+    </div>
+    <span class="time">2h ago</span>
+    </div>
+
+     <div class="notification-item">
+    <div class="notification-content">
+    <h4>Welcome to Study Planner</h4>
+    <p>Your new account setup has finished perfectly.</p>
+    </div>
+    <span class="time">Yesterday</span>
+    </div>
+    </div>
+
+    <button onclick="markAllRead()">Mark All as Read</button>
+    <button class="secondary-btn" onclick="goBack()">Back to Dashboard</button>
+
+    </div>
+
+    <script>
+    function markAllRead() {
+        let unreadItems = document.querySelectorAll('.notification-item.unread');
+        unreadItems.forEach(item => {
+            item.classList.remove('unread');
+        });
+        alert("All notifications marked as read!");
+    }
+
+    function goBack(){
+        window.location.href = "Welcome.html";
+    }
+    </script> 
 </body>
 </html>
