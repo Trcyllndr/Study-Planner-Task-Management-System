@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,63 +23,77 @@ display:flex;
 min-height:100vh;
 color:#222;
 }
+/* =======================
+   SIDEBAR (MATCH TASK.HTML STYLE)
+======================= */
 
 .sidebar{
-width:250px;
-background:linear-gradient(180deg,#171717,#111827);
-padding:25px 18px;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
+    width:250px;
+    background:linear-gradient(to bottom,#0b1020,#121b31);
+    padding:25px 18px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
+/* LOGO */
 .logo{
-font-size:34px;
-font-weight:bold;
-color:white;
-margin-bottom:35px;
+    font-size:34px;
+    font-weight:bold;
+    color:white;
+    margin-bottom:35px;
 }
 
 .logo span{
-color:#8fd7f3;
+    color:#8fd7f3;
 }
 
+/* MENU FIX */
 .menu{
-list-style:none;
+    list-style:none;
+    padding:0;
 }
 
 .menu li{
-padding:15px;
-margin-bottom:12px;
-border-radius:14px;
-background:rgba(255,255,255,0.05);
-color:white;
-cursor:pointer;
-transition:.25s;
-font-size:17px;
+    margin-bottom:12px;
 }
 
-.menu li:hover{
-background:#8fd7f3;
-color:#111;
-transform:translateX(4px);
+/* CARD STYLE MENU */
+.menu li a{
+    display:block;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.05);
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    transition:.25s;
 }
 
-.menu .active{
-background:#8fd7f3;
-color:#111;
-font-weight:bold;
+/* HOVER LIGHT BLUE */
+.menu li a:hover{
+    background:#8fd7f3;
+    color:#111;
+    transform:translateX(4px);
 }
 
+/* ACTIVE */
+.menu li.active a{
+    background:#8fd7f3;
+    color:#111;
+    font-weight:bold;
+}
+
+/* QUOTE BOX */
 .bottom-box{
-background:rgba(255,255,255,0.06);
-padding:22px;
-border-radius:18px;
-color:#ddd;
-text-align:center;
-font-size:14px;
-line-height:1.7;
-margin-top:30px;
+    background:rgba(255,255,255,0.06);
+    padding:22px;
+    border-radius:18px;
+    color:#ddd;
+    text-align:center;
+    font-size:14px;
+    line-height:1.7;
+    margin-top:30px;
 }
 
 .main{
@@ -218,6 +233,8 @@ cursor:pointer;
 transition:.2s;
 }
 
+
+
 button:hover{
 background:#75cbe9;
 }
@@ -314,31 +331,30 @@ Study <span>Planner</span>
 </div>
 
 <!-- MENU -->
-
 <ul class="menu">
 
 <li class="active">
-Dashboard
+    <a href="#">Dashboard</a>
 </li>
 
 <li>
-Tasks
+    <a href="task.html">Tasks</a>
 </li>
 
 <li>
-Schedule
+    <a href="schedule.html">Schedule</a>
 </li>
 
 <li>
-Categories
+    <a href="categories.html">Categories</a>
 </li>
 
 <li>
-Notifications
+    <a href="notifications.html">Notifications</a>
 </li>
 
-<li onclick="logout()">
-Logout
+<li>
+    <a href="#" onclick="logout()">Logout</a>
 </li>
 
 </ul>
